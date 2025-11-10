@@ -1,1 +1,4 @@
 flask
+tesseract
+Pillow
+playwright
