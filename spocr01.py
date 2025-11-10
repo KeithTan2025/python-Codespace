@@ -69,6 +69,7 @@ async def main():
                                 break
                             # Extract up to 10 characters after the match
                             after = line[pos + len("Next Jackpot") : pos + len("Next Jackpot") + 10]
+                            after_no_spaces = after.replace(' ', '')
                             print(repr(after))  # Use repr to show spaces, newlines, etc.
                             start = pos + 1  # Allow overlapping matches (optional)
             except FileNotFoundError:
