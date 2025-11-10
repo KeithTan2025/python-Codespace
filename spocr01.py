@@ -70,7 +70,7 @@ async def main():
                             # Extract up to 10 characters after the match
                             after = line[pos + len("Next Jackpot") : pos + len("Next Jackpot") + 10]
                             after_no_spaces = after.replace(' ', '')
-                            print(repr(after))  # Use repr to show spaces, newlines, etc.
+                            print(repr(after_no_spaces))  # Use repr to show spaces, newlines, etc.
                             start = pos + 1  # Allow overlapping matches (optional)
             except FileNotFoundError:
                 print(f"Error: File '{OUTPUT_TEXT}' not found.", file=sys.stderr)
@@ -79,7 +79,7 @@ async def main():
 
             # Save amount
             with open(AMOUNT_TEXT, "w", encoding="utf-8") as f:
-                f.write(after)
+                f.write(after_no_spaces)
             print(f"📄 Amount text saved as '{AMOUNT_TEXT}'")
 
 
