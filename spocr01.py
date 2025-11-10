@@ -11,7 +11,7 @@ Dependencies:
 
 Note: Tesseract OCR must be installed separately on your system.
 """
-
+import sys
 import asyncio
 from playwright.async_api import async_playwright
 from PIL import Image
@@ -58,6 +58,22 @@ async def main():
             with open(OUTPUT_TEXT) as f:
                 amount_text = f.readlines()[25]
                 print(amount_text)
+
+            try:
+                with open(OUTPUT_TEXT, 'r') as f:
+                    for line in f:
+                        start = 0
+                        while True:
+                            pos = line.find("Next Jackpot", start)
+                            if pos == -1:
+                                break
+                            # Extract up to 10 characters after the match
+                            after = line[pos + len("Next Jackpot") : pos + len("Next Jackpot") + 10]
+                            print(repr(after))  # Use repr to show spaces, newlines, etc.
+                            start = pos + 1  # Allow overlapping matches (optional)
+            except FileNotFoundError:
+                print(f"Error: File '{OUTPUT_TEXT}' not found.", file=sys.stderr)
+                sys.exit(1)
 
 
             # Save amount
