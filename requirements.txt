@@ -2,3 +2,4 @@ flask
 tesseract
 Pillow
 playwright
+pytesseract
