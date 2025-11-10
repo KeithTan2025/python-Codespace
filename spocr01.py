@@ -78,7 +78,7 @@ async def main():
 
             # Save amount
             with open(AMOUNT_TEXT, "w", encoding="utf-8") as f:
-                f.write(amount_text)
+                f.write(after)
             print(f"📄 Amount text saved as '{AMOUNT_TEXT}'")
 
 
