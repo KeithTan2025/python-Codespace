@@ -1,1 +1,23 @@
-#test
+    name: Scheduled Python Script
+
+    on:
+      schedule:
+        - cron: '0 0 * * *' # Runs daily at 00:00 UTC
+
+    jobs:
+      run-script:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+
+          - name: Set up Python
+            uses: actions/setup-python@v5
+            with:
+              python-version: '3.x' # Specify your Python version
+
+          - name: Install dependencies
+            run: pip install -r requirements.txt # If you have a requirements.txt
+
+          - name: Run Python script
+            run: python your_script_name.py
