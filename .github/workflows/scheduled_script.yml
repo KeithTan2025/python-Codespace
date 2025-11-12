@@ -2,7 +2,7 @@
 
     on:
       schedule:
-        - cron: '0 0 * * *' # Runs daily at 00:00 
+        - cron: '1 */4 * * *' # Runs daily at 00:00 
         #- cron: '*/15 * * * *' # Runs every 15 mins
 
     permissions:
