@@ -29,3 +29,11 @@
 
           - name: Run Python script
             run: python spocr01.py
+
+            
+            - name: Auto Commit
+                uses: stefanzweifel/git-auto-commit-action@v7
+                  with:
+                        commit_message: files changes commit
+
+                
