@@ -38,7 +38,7 @@ async def main():
         now = datetime.now()
 
             # Print in default format (YYYY-MM-DD HH:MM:SS.microseconds)
-            #print("Current date and time:", now)
+        print("Current date and time:", now)
 
 
 
