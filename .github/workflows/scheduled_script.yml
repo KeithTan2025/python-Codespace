@@ -25,6 +25,9 @@
             run: 
               pip install -r requirements.txt # If you have a requirements.txt
               #playwright install --with-deps # Install Playwright
+              sudo apt install tesseract-ocr
+
+              
 
           - name: Run Python script
             run: python spocr01.py
