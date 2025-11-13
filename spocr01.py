@@ -63,7 +63,7 @@ async def main():
 
             # Save text
             with open(OUTPUT_TEXT, "w", encoding="utf-8") as f:
-                f.write(now + extracted_text)
+                f.write(str(now) + " " + extracted_text)
             print(f"📄 Extracted text saved as '{OUTPUT_TEXT}'")
 
             with open(OUTPUT_TEXT) as f:
@@ -92,7 +92,7 @@ async def main():
 
             # Save amount
             with open(AMOUNT_TEXT, "w", encoding="utf-8") as f:
-                f.write(after_no_spaces)
+                f.write(after_no_spaces + " " + str(now))
             print(f"📄 Amount text saved as '{AMOUNT_TEXT}'")
 
 
