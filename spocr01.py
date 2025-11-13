@@ -16,6 +16,8 @@ import asyncio
 from playwright.async_api import async_playwright
 from PIL import Image
 import pytesseract
+from datetime import datetime
+
 import os
 
 OUTPUT_IMAGE = "toto_results.png"
@@ -31,7 +33,6 @@ async def main():
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page()
 
-        from datetime import datetime
 
         # Get current date and time
         now = datetime.now()
