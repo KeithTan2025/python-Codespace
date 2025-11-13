@@ -1,6 +1,5 @@
 flask
-tesseract-ocr
 Pillow
-playwright
+tesseract-ocr
 pytesseract
-
+playwright
