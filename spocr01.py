@@ -66,30 +66,13 @@ async def main():
                 f.write(str(now) + " " + extracted_text)
             print(f"📄 Extracted text saved as '{OUTPUT_TEXT}'")
 
-            with open(OUTPUT_TEXT) as f:
-                amount_text = f.readlines()[25]
-                print(amount_text)
 
-            try:
-                with open(OUTPUT_TEXT, 'r') as f:
-                    for line in f:
-                        start = 0
-                        while True:
-                            pos = line.find("Next Jackpot", start)
-                            if pos == -1:
-                                break
-                            # Extract up to 10 characters after the match
-                            after = line[pos + len("Next Jackpot") : pos + len("Next Jackpot") + 10]
-                            after_no_spaces = after.replace(' ', '')
-                            print(repr(after_no_spaces))  # Use repr to show spaces, newlines, etc.
-                            start = pos + 1  # Allow overlapping matches (optional)
-            except FileNotFoundError:
-                print(f"Error: File '{OUTPUT_TEXT}' not found.", file=sys.stderr)
-                sys.exit(1)
-
-
-
-
+            with open(OUTPUT_TEXT, "r") as f:
+              for line in f:
+                if "est" in line:
+                after_no_spaces = line.strip()
+                print(after_no_spaces)
+                
             # Save amount
             with open(AMOUNT_TEXT, "w", encoding="utf-8") as f:
                 f.write(after_no_spaces + " " + str(now))
