@@ -70,8 +70,8 @@ async def main():
             with open(OUTPUT_TEXT, "r") as f:
               for line in f:
                 if "est" in line:
-                after_no_spaces = line.strip()
-                print(after_no_spaces)
+                  after_no_spaces = line.strip()
+                  print(after_no_spaces)
                 
             # Save amount
             with open(AMOUNT_TEXT, "w", encoding="utf-8") as f:
