@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Your London 4-Day Itinerary&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Chosen Palette: Slate &amp; Blue on White/Gray-50 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Application Structure Plan: A tabbed single-page application. Each tab represents a day (1-4) or a special note (HP Studios). This structure is the most intuitive for a multi-day itinerary, allowing the user to focus on one day at a time. The flow within each day is geographically clustered to meet the user's 'smooth and seamless' requirement. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Visualization &amp; Content Choices: Report Info (User's list of 16 locations) -&gt; Goal (Organize into a 4-day plan) -&gt; Presentation (Interactive tabs for days, cards for activities) -&gt; Interaction (Clicking tabs reveals the day's schedule) -&gt; Justification (This is a clear, standard UI for schedules). The Harry Potter Studios outlier is handled in a separate, non-day-specific tab to explain the time commitment, which is crucial for a 'convenient' plan. No charts needed as this is a schedule, not data analysis. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8fafc;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.active-tab {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 2px solid #2563eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #2563eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f0f4ff;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-content.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="text-slate-800"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container mx-auto max-w-7xl p-4 md:p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;header class="text-center mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-3xl md:text-5xl font-bold text-slate-900"&gt;Your Smooth 4-Day London Itinerary&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-lg text-slate-600 mt-2"&gt;A seamless plan exploring your chosen highlights, grouped by location.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;nav class="flex flex-wrap justify-center border-b border-gray-200 bg-white rounded-lg shadow-sm mb-8 overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab-link active-tab py-4 px-3 md:px-6 text-sm md:text-lg font-medium text-gray-500 cursor-pointer hover:bg-gray-100 hover:text-gray-700 transition-colors duration-200" data-tab="day1"&gt;Day 1&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab-link py-4 px-3 md:px-6 text-sm md:text-lg font-medium text-gray-500 cursor-pointer hover:bg-gray-100 hover:text-gray-700 transition-colors duration-200" data-tab="day2"&gt;Day 2&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab-link py-4 px-3 md:px-6 text-sm md:text-lg font-medium text-gray-500 cursor-pointer hover:bg-gray-100 hover:text-gray-700 transition-colors duration-200" data-tab="day3"&gt;Day 3&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab-link py-4 px-3 md:px-6 text-sm md:text-lg font-medium text-gray-500 cursor-pointer hover:bg-gray-100 hover:text-gray-700 transition-colors duration-200" data-tab="day4"&gt;Day 4&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab-link py-4 px-3 md:px-6 text-sm md:text-lg font-medium text-yellow-600 cursor-pointer hover:bg-yellow-50 hover:text-yellow-700 transition-colors duration-200" data-tab="hp"&gt;⚠️ Harry Potter&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="day1" class="tab-content active"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-6 text-center text-blue-800"&gt;Day 1: Royal &amp; Political Heart&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-center text-slate-600 mb-8 max-w-3xl mx-auto"&gt;This section covers the iconic landmarks of Westminster and the South Bank. These sites are all within walking distance, making for a smooth and memorable first day exploring the heart of Royal London.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Morning&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Buckingham Palace&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Start your day at the Queen's official residence. Arrive around 10:30 AM to see the Changing of the Guard (on select days, check schedule).&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="border-t border-gray-100 pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-500 font-medium"&gt;➡️ Next: Enjoy a beautiful walk through St. James's Park or Green Park towards Westminster.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Late Morning&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Westminster Abbey &amp; Big Ben&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Book tickets in advance for the Abbey, a stunning Gothic church and site of royal coronations. Afterwards, see the iconic Big Ben and the Houses of Parliament from Parliament Square.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="border-t border-gray-100 pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-500 font-medium"&gt;➡️ Next: Walk across Westminster Bridge for the best photos.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Afternoon&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;London Eye&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Head to the South Bank for your pre-booked slot on the London Eye. This giant observation wheel offers breathtaking 360-degree views of the entire city.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="border-t border-gray-100 pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-500 font-medium"&gt;➡️ Next: The pier for the river cruise is right nearby.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Evening&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Cruise down River Thames&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;A perfect way to end the day. A sunset or evening cruise gives you a new perspective on the illuminated landmarks you saw earlier, from the water.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="day2" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-6 text-center text-blue-800"&gt;Day 2: Historic Southwark &amp; Culture&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-center text-slate-600 mb-8 max-w-3xl mx-auto"&gt;Today explores 1,000 years of history at the Tower, the vibrant tastes of London's most famous food market, and one of the world's greatest museums. This route requires one short Tube ride in the afternoon.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Morning&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Tower of London&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Arrive at opening (10:00 AM) to beat the crowds. See the Crown Jewels, meet the famous Beefeaters, and learn about its history as a palace, prison, and zoo.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="border-t border-gray-100 pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-500 font-medium"&gt;➡️ Next: It's a short walk to London Bridge and Borough Market.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Lunchtime&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Borough Market &amp; London Bridge&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Explore London's premier food market, located right by London Bridge. This is the perfect spot for lunch, with endless options from global street food to classic British pies.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="border-t border-gray-100 pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-500 font-medium"&gt;➡️ Next: Hop on the Northern line tube from London Bridge to Tottenham Court Road.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Afternoon&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;British Museum&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Home to a vast collection of world art and artifacts. Entry is free. Don't miss the Rosetta Stone, the Parthenon sculptures, and the stunning Great Court.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="day3" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-6 text-center text-blue-800"&gt;Day 3: Museums, Parks &amp; Palaces&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-center text-slate-600 mb-8 max-w-3xl mx-auto"&gt;This day is focused on the beautiful South Kensington and Knightsbridge area. You'll explore a world-class museum, relax in London's most famous park, and visit the city's most iconic luxury department store.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Morning&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Natural History Museum&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Start your day in South Kensington at this breathtaking museum (entry is free, but book a time slot). Famous for its dinosaur skeletons and the magnificent Hintze Hall.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="border-t border-gray-100 pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-500 font-medium"&gt;➡️ Next: The museum is right next to Hyde Park.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Midday&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Hyde Park&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Enjoy a refreshing walk through this massive, beautiful park. You can walk along the Serpentine lake, see the Diana Memorial Fountain, or just relax on the grass.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="border-t border-gray-100 pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-500 font-medium"&gt;➡️ Next: A short walk from the south side of the park takes you to Harrods.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Afternoon&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Harrods for Shopping&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Experience the world's most famous luxury department store. Even if you're just browsing, the opulent Food Halls and the Egyptian Escalator are sights to behold.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="day4" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-semibold mb-6 text-center text-blue-800"&gt;Day 4: Markets &amp; Shopping&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-center text-slate-600 mb-8 max-w-3xl mx-auto"&gt;A day dedicated to London's diverse shopping and market culture. From the colorful streets of Notting Hill to the alternative vibe of Camden, finishing at the world's most famous shopping street.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Morning&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Notting Hill&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;Explore this charming West London neighborhood. See the colorful houses and browse the antique and fashion stalls at Portobello Road Market (main market day is Saturday).&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="border-t border-gray-100 pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-500 font-medium"&gt;➡️ Next: Take the Central line tube to Camden Town (change at Tottenham Court Road).&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Lunch &amp; Afternoon&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Camden Market&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;A vast, eclectic market known for its alternative fashion, unique crafts, and amazing global street food. This is the perfect place to grab lunch and explore.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="border-t border-gray-100 pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="text-sm text-gray-500 font-medium"&gt;➡️ Next: Take the Northern line tube south to Oxford Circus.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:shadow-xl transition-shadow duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-medium text-blue-600 uppercase"&gt;Late Afternoon&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="text-xl font-semibold text-slate-800 mt-2 mb-2"&gt;Oxford Street&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 mb-4"&gt;End your shopping day on Europe's busiest shopping street, home to flagship stores for countless major brands. Don't miss Selfridges department store.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="hp" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-yellow-50 border-l-4 border-yellow-400 p-8 rounded-lg shadow-md max-w-4xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-2xl font-semibold text-yellow-900 mb-4"&gt;⚠️ A Note on Harry Potter Studios&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-yellow-800 space-y-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;This is a vital part of your plan! The Warner Bros. Studio Tour London is &lt;strong class="font-semibold"&gt;not in central London.&lt;/strong&gt; It is located in Watford Junction, which is about an hour away by train and shuttle bus.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;A visit to the studios is a fantastic experience, but it is an all-day event. It typically takes &lt;strong class="font-semibold"&gt;5-7 hours&lt;/strong&gt; including travel time.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="font-semibold text-lg"&gt;You cannot combine the Studio Tour with any of the other days. You must dedicate one of your 4 days entirely to it.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;&lt;strong&gt;Recommendation:&lt;/strong&gt; If the Harry Potter Studios is a top priority, please &lt;strong class="font-semibold"&gt;substitute it for one of the other 4 days&lt;/strong&gt; (Day 3 or Day 4 would be the easiest to swap out).&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const tabs = document.querySelectorAll('.tab-link');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const contents = document.querySelectorAll('.tab-content');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>tabs.forEach(tab =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>tab.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const target = tab.getAttribute('data-tab');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>tabs.forEach(t =&gt; t.classList.remove('active-tab'));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>tab.classList.add('active-tab');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>contents.forEach(c =&gt; c.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById(target).classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
