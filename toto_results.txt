@@ -1,13 +1,9 @@
-2026-06-26 02:30:27.579275 SINGAPORE =
-
-SWEEP
-
-Back to Lottery Home Watch TOTO Draw (Live Broadcast)
+2026-06-26 14:04:36.179320 Back to Lottery Home Watch TOTO Draw (Live Broadcast)
 
 Results
 
 = Next Jackpot $2,500,000 est Draw Date
-T [e) [Oo Next Draw Mon, 29 Jun 2026 , 6.30pm
+TO [Oo Next Draw Mon, 29 Jun 2026 , 6.30pm
 Thu, 25 Jun 2026 v
 
 Thu, 25 Jun 2026 Draw No. 4194 Mon, 22 Jun 2026 Draw No. 4193
@@ -18,18 +14,20 @@ a4 20
 Group 1 Prize Group 1 Prize
 
 $1,195,425 $5,624,442
-Prize Group Share Amount _No. of Winning Shares Prize Group Share Amount _No. of Winning Shares »
+Prize Group Share Amount —_No. of Winning Shares Prize Group Share Amount —_No. of Winning Shares »
 
-Group 1 - - Group 1 $5,624,442 1
+Group 1 - : Group 1 $5,624,442 1
 
-Group 2 - - Group 2 $96,169 6
+Group 2 - : Group 2 $96,169 6
 
 Group 3 $1,923 90 Group 3 $1,587 250
 
 Group 4 $540 175 Group 4 $357 607
 
-Group 5 $50 4,774 Group 5 $50 13,063
+Group 5 $50 4774 Group 5 $50 13,063
 
 Group 6 $25 5,749 Group 6 $25 17,452
 
 Group 7 $10 93,887 Group 7 $10 236,098
+
+Winning Winning
